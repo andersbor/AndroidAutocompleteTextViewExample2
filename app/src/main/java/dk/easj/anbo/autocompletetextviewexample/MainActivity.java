@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Arrays.sort(FISH_NAMES);
-        AutoCompleteTextView view = (AutoCompleteTextView) findViewById(R.id.main_breed_autocompletetextview);
+        AutoCompleteTextView view = findViewById(R.id.mainBreedAutoCompleteTextView);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, FISH_NAMES);
         view.setAdapter(adapter);
@@ -49,8 +50,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonShowClicked(View view) {
-        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.main_breed_autocompletetextview);
+        AutoCompleteTextView textView = findViewById(R.id.mainBreedAutoCompleteTextView);
         Editable text = textView.getText();
-        Toast.makeText(this, "You choose: " + text, Toast.LENGTH_SHORT).show();
+        String message = "You choose: " + text;
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        TextView messageView = findViewById(R.id.mainMessageTextView);
+        messageView.setText(message);
     }
 }
