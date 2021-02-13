@@ -1,12 +1,15 @@
 package dk.easj.anbo.autocompletetextviewexample;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.text.Editable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, FISH_NAMES);
         view.setAdapter(adapter);
+
+        final Button button = findViewById(R.id.mainShowButton);
+        button.setOnHoverListener(new View.OnHoverListener() {
+            @Override
+            public boolean onHover(View v, MotionEvent event) {
+                button.setBackgroundColor(Color.BLUE);
+                return false;
+            }
+        });
     }
 
     public void buttonNextClicked(View view) {
